@@ -1,5 +1,5 @@
 {
-  "name": "nativescript-bitmap-factory",
+  "name": "@souriscloud/nativescript-bitmap-factory",
   "description": "A NativeScript module for creating and manipulating bitmap images.",
   "version": "2.0.0",
   "nativescript": {
