@@ -1,16 +1,16 @@
 {
   "name": "nativescript-bitmap-factory",
   "description": "A NativeScript module for creating and manipulating bitmap images.",
-  "version": "1.8.1",
+  "version": "2.0.0",
   "nativescript": {
     "platforms": {
-      "ios": "1.0.0",
-      "android": "1.1.0"
+      "ios": "7.0.0",
+      "android": "7.0.0"
     }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mkloubert/nativescript-bitmap-factory"
+    "url": "https://github.com/souriscloud/nativescript-bitmap-factory"
   },
   "keywords": [
     "NativeScript",
@@ -30,17 +30,36 @@
     "JPEG",
     "JPG"
   ],
+  "scripts": {
+    "setup": "npm i && ts-patch install"
+  },
+  "compilerOptions": {
+    "plugins": [
+      {
+        "transform": "@nativescript/webpack/transformers/ns-transform-native-classes",
+        "type": "raw"
+      }
+    ]
+  },
   "author": {
-    "name": "Marcel Joachim Kloubert",
-    "email": "marcel.kloubert@gmx.net"
+    "name": "Souris.CLOUD",
+    "email": "me@souris.cloud"
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/mkloubert/nativescript-bitmap-factory/blob/master/LICENSE"
+    "url": "https://github.com/souriscloud/nativescript-bitmap-factory/blob/master/LICENSE"
   },
   "bugs": {
-    "url": "https://github.com/mkloubert/nativescript-bitmap-factory/issues"
+    "url": "https://github.com/souriscloud/nativescript-bitmap-factory/issues"
   },
-  "homepage": "https://github.com/mkloubert/nativescript-bitmap-factory",
-  "readmeFilename": "README.md"
+  "homepage": "https://github.com/souriscloud/nativescript-bitmap-factory",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "@nativescript/core": "~7.0.0",
+    "@nativescript/android": "~7.0.0",
+    "@nativescript/ios": "~7.0.0",
+    "@nativescript/types": "~7.0.0",
+    "typescript": "~3.9.0",
+    "@types/node": "~14.11.2"
+  }
 }

@@ -1,17 +1,17 @@
 // The MIT License (MIT)
-// 
+//
 // Copyright (c) Marcel Joachim Kloubert <marcel.kloubert@gmx.net>
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
 // deal in the Software without restriction, including without limitation the
 // rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
 // sell copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,10 +20,10 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import Application = require("application");
+import Application = require("@nativescript/core/application");
 var BitmapFactory = require("./BitmapFactory");
-import ImageSource = require('image-source');
-import TypeUtils = require("utils/types");
+import ImageSource = require('@nativescript/core/image-source');
+import TypeUtils = require("@nativescript/core/utils/types");
 
 
 /**
@@ -79,7 +79,7 @@ export interface IFont {
      * Gets the custom forground color.
      */
     color?: string | number | IArgb;
-    
+
     /**
      * Gets the name.
      */
@@ -97,7 +97,7 @@ export interface IFont {
 export interface IMakeMutableOptions {
     /**
      * Dispose current bitmap or not.
-     * 
+     *
      * Default: (false)
      */
     disposeCurrent?: boolean;
@@ -109,7 +109,7 @@ export interface IMakeMutableOptions {
         /**
          * This is only used if stradegy is 'Custom' and
          * is used to define the custom temp directory.
-         * 
+         *
          * This can be a string or a native object that represents a file
          * like java.lang.File on Android.
          */
@@ -117,7 +117,7 @@ export interface IMakeMutableOptions {
 
         /**
          * The stradegy.
-         * 
+         *
          * Default: Memory
          */
         stradegy?: TempFileStradegy;
@@ -132,7 +132,7 @@ export interface IPoint2D {
      * Gets the X coordinate.
      */
     x: number;
-    
+
     /**
      * Gets the X coordinate.
      */
@@ -147,7 +147,7 @@ export interface ISize {
      * Gets the height.
      */
     height: number;
-    
+
     /**
      * Gets the width.
      */
@@ -205,19 +205,19 @@ export interface IBitmap {
 
     /**
      * Clones that bitmap.
-     * 
+     *
      * @return {IBitmap} Cloned bitmap.
      */
     clone(): IBitmap;
 
     /**
      * Crops that bitmap and returns its copy.
-     * 
+     *
      * @param {IPoint2D} [leftTop] The coordinates of the left/top corner.
      * @param {ISize} [size] The size.
-     * 
+     *
      * @return {IBitmap} The cropped bitmap.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     crop(leftTop?: IPoint2D | string,
@@ -230,10 +230,10 @@ export interface IBitmap {
 
     /**
      * Disposes the bitmap. Similar to the IDisposable pattern of .NET Framework.
-     * 
+     *
      * @param {Function} [action] The action to invoke BEFORE bitmap is disposed.
      * @param {T} [tag] An optional value for the action.
-     * 
+     *
      * @return {TResult} The result of the action (if defined).
      */
     dispose<T, TResult>(action?: (bmp: IBitmap, tag?: T) => TResult,
@@ -241,14 +241,14 @@ export interface IBitmap {
 
     /**
      * Draws a circle.
-     * 
+     *
      * @chainable
-     * 
+     *
      * @param {number} [radius] The radius.
      * @param any [center] The center coordinates.
      * @param any [color] The line color.
      * @param any [fillColor] The fill color.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     drawCircle(radius?: number,
@@ -277,13 +277,13 @@ export interface IBitmap {
 
     /**
      * Draws a line.
-     * 
+     *
      * @chainable
-     * 
+     *
      * @param {IPoint2D} start The coordinates of the start point.
      * @param {IPoint2D} end The coordinates of the end point.
      * @param {IArgb} [color] The color to use. Default is black.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     drawLine(start: IPoint2D | string, end: IPoint2D | string,
@@ -291,14 +291,14 @@ export interface IBitmap {
 
     /**
      * Draws an oval circle.
-     * 
+     *
      * @chainable
-     * 
+     *
      * @param {ISize} [size] The size.
      * @param {IPoint2D} [leftTop] The coordinates of the left/top corner.
      * @param {IArgb} [color] The line color.
      * @param {IArgb} [fillColor] The fill color.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     drawOval(size?: ISize | string,
@@ -307,14 +307,14 @@ export interface IBitmap {
 
     /**
      * Draws a rectangle.
-     * 
+     *
      * @chainable
-     * 
+     *
      * @param {ISize} [size] The size.
      * @param {IPoint2D} [leftTop] The coordinates of the left/top corner.
      * @param {IArgb} [color] The line color.
      * @param {IArgb} [fillColor] The fill color.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     drawRect(size?: ISize | string,
@@ -323,11 +323,11 @@ export interface IBitmap {
 
     /**
      * Gets the color of a point.
-     * 
+     *
      * @param {IPoint2D} [coordinates] The coordinates of the point.
-     * 
+     *
      * @return {IArgb} The color.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     getPoint(coordinates?: IPoint2D | string): IArgb;
@@ -344,17 +344,17 @@ export interface IBitmap {
 
     /**
      * Inserts another image into that bitmap.
-     * 
+     *
      * @chainable
-     * 
+     *
      * @param {IBitmap} other The other image.
      * @param {IPoint2D} [leftTop] The coordinates of the left/top corner.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     insert(other: any,
            leftTop?: IPoint2D | string): IBitmap;
-    
+
     /**
      * Gets if the object has been disposed or not.
      */
@@ -367,68 +367,68 @@ export interface IBitmap {
 
     /**
      * Normalizes a color value.
-     * 
+     *
      * @param any value The input value.
-     * 
+     *
      * @return {IArgb} The output value.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     normalizeColor(value: string | number | IArgb): IArgb;
 
     /**
      * Creates a copy of that bitmap with a new size.
-     * 
+     *
      * @param {ISize} newSize The new size.
-     * 
+     *
      * @return {IBitmap] The new bitmap.
      */
     resize(newSize: ISize | string): IBitmap;
 
     /**
      * Resizes that image by defining a new height by keeping ratio.
-     * 
+     *
      * @param {Number} newHeight The new height.
-     * 
+     *
      * @return {IBitmap} The resized image.
      */
     resizeHeight(newHeight: number): IBitmap;
 
     /**
      * Resizes that image by defining a new (maximum) size by keeping ratio.
-     * 
+     *
      * @param {Number} maxSize The maximum width or height.
-     * 
+     *
      * @return {IBitmap} The resized image.
      */
     resizeMax(maxSize: number): IBitmap;
 
     /**
      * Resizes that image by defining a new width by keeping ratio.
-     * 
+     *
      * @param {Number} newWidth The new width.
-     * 
+     *
      * @return {IBitmap} The resized image.
      */
     resizeWidth(newWidth: number): IBitmap;
 
     /**
      * Rotates the image.
-     * 
-     * @param {number} [degrees] The number of degrees to rotate. Default: 90. 
-     * 
+     *
+     * @param {number} [degrees] The number of degrees to rotate. Default: 90.
+     *
      * @return {IBitmap} The rotated image.
      */
     rotate(degrees?: number): IBitmap;
 
     /**
      * Sets a pixel / point.
-     * 
+     *
      * @chainable
-     * 
+     *
      * @param {IPoint2D} [coordinates] The coordinate where to draw the point.
      * @param {IArgb} [color] The color of the point.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     setPoint(coordinates?: IPoint2D | string,
@@ -441,56 +441,56 @@ export interface IBitmap {
 
     /**
      * Converts that image to a Base64 string.
-     * 
+     *
      * @param {OutputFormat} format The output format. Default is: PNG
      * @param {Number} quality A value between 0 (0%) and 100 (100%) for the output quality.
-     * 
+     *
      * @return {String} The bitmap a Base64 string.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     toBase64(format?: OutputFormat, quality?: number): string;
 
     /**
      * Converts that image to a data URL.
-     * 
+     *
      * @param {OutputFormat} format The output format. Default is: PNG
      * @param {Number} quality A value between 0 (0%) and 100 (100%) for the output quality.
-     * 
+     *
      * @return {String} The bitmap as data url.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     toDataUrl(format?: OutputFormat, quality?: number): string;
 
     /**
      * Returns that image as ImageSource.
-     * 
+     *
      * @return {ImageSource} The bitmap as ImageSource.
      */
     toImageSource(): ImageSource.ImageSource;
 
     /**
      * Converts that image to an object.
-     * 
+     *
      * @param {OutputFormat} format The output format. Default is: PNG
      * @param {Number} quality A value between 0 (0%) and 100 (100%) for the output quality.
-     * 
+     *
      * @return {IBitmapData} The bitmap as object.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     toObject(format?: OutputFormat, quality?: number): IBitmapData;
 
     /**
      * Writes a text.
-     * 
+     *
      * @chainable
-     * 
+     *
      * @param {any} txt The text /value to write.
      * @param {IPoint2D} [leftTop] The left/top corner.
      * @param {IFont} [font] The custom font to use.
-     * 
+     *
      * @throws At least one input value is invalid.
      */
     writeText(txt: any,
@@ -513,7 +513,7 @@ export interface ICreateBitmapOptions {
         /**
          * Let iOS auto release the underlying CGImage (true) or let
          * the object call CGImageRelease() manually (false).
-         * 
+         *
          * Default: (true)
          */
         autoRelease?: boolean;
@@ -522,12 +522,12 @@ export interface ICreateBitmapOptions {
 
 /**
  * Returns a value as bitmap object.
- * 
+ *
  * @param any v The input value.
  * @param {Boolean} [throwException] Throw exception if 'v' is invalid or return (false).
- * 
+ *
  * @throws Input value is invalid.
- * 
+ *
  * @return {IBitmap} The output value or (false) if input value is invalid.
  */
 export function asBitmap(v: any, throwException: boolean = true): IBitmap {
@@ -541,11 +541,11 @@ export function asBitmap(v: any, throwException: boolean = true): IBitmap {
 
 /**
  * Creates a new bitmap.
- * 
+ *
  * @param {Number} width The width of the new image.
  * @param {Number} [height] The optional height of the new image. If not defined, the width is taken as value.
  * @param {ICreateBitmapOptions} [opts] Additional options for creating the bitmap.
- * 
+ *
  * @return {IBitmap} The new bitmap.
  */
 export function create(width: number, height?: number, opts?: ICreateBitmapOptions): IBitmap {
@@ -566,7 +566,7 @@ export function create(width: number, height?: number, opts?: ICreateBitmapOptio
 
 /**
  * Returns the default options for creating a new bitmap.
- * 
+ *
  * @return {ICreateBitmapOptions} The options.
  */
 export function getDefaultOptions(): ICreateBitmapOptions {
@@ -580,12 +580,12 @@ export function getDefaultOptions(): ICreateBitmapOptions {
 
 /**
  * Makes a (native) image / bitmap mutable.
- * 
+ *
  * @param {any} v The (native) object.
  * @param {IMakeMutableOptions} [opts] The custom options.
- * 
+ *
  * @return {any} The mutable object.
- * 
+ *
  * @throws Native object is invalid.
  */
 export function makeMutable(v: any, opts?: IMakeMutableOptions): any {
@@ -602,7 +602,7 @@ export function makeMutable(v: any, opts?: IMakeMutableOptions): any {
 
 /**
  * Sets the default options for creating a new bitmap.
- * 
+ *
  * @param {ICreateBitmapOptions} The new options.
  */
 export function setDefaultOptions(opts: ICreateBitmapOptions) {

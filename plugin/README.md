@@ -5,30 +5,11 @@
 
 A [NativeScript](https://nativescript.org/) module for creating and manipulating bitmap images.
 
+
+## Forked
+
+This module is fork of [nativescript-toolbox](https://github.com/mkloubert/nativescript-bitmap-factory).
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=U3FY9F6QMDQ4L&lc=DE&item_name=Marcel%20Kloubert&item_number=nativescript%2dbitmap%2dfactory&no_note=1&no_shipping=2&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
-
-## NativeScript Toolbox
-
-This module is part of [nativescript-toolbox](https://github.com/mkloubert/nativescript-toolbox).
-
-## License
-
-[MIT license](https://raw.githubusercontent.com/mkloubert/nativescript-bitmap-factory/master/LICENSE)
-
-## Platforms
-
-* Android
-* iOS
-
-## Installation
-
-Run
-
-```bash
-tns plugin add nativescript-bitmap-factory
-```
-
-inside your app project to install the module.
 
 ## Usage
 
@@ -425,9 +406,3 @@ interface IBitmap {
 }
 ```
 
-## Contributors
-
-* [Dimitar Topuzov](https://github.com/dtopuzov)
-* [Geoff Bullen](https://github.com/geoffbullen)
-* [Jonathan Salomon](https://github.com/abhayastudios)
-* [Josh Huckabee](https://github.com/jhuckabee)

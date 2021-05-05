@@ -1,17 +1,17 @@
 // The MIT License (MIT)
-// 
+//
 // Copyright (c) Marcel Joachim Kloubert <marcel.kloubert@gmx.net>
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
 // deal in the Software without restriction, including without limitation the
 // rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
 // sell copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,10 +20,10 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-var Application = require("application");
-var ImageSource = require('image-source');
-var KnownColors = require("color/known-colors");
-var TypeUtils = require("utils/types");
+var Application = require("@nativescript/core/application");
+var ImageSource = require('@nativescript/core/image-source');
+var KnownColors = require("@nativescript/core/color/known-colors");
+var TypeUtils = require("@nativescript/core/utils/types");
 
 const REGEX_COLOR = /^(#)?([a-f0-9]{3,4}|[a-f0-9]{6}|[a-f0-9]{8})$/i;
 exports.REGEX_COLOR = REGEX_COLOR;
@@ -132,7 +132,7 @@ function setupBitmapClass(bitmapClass) {
                 width: this.width
             };
         }
-        
+
         if (TypeUtils.isNullOrUndefined(leftTop)) {
             leftTop = {
                 x: 0,
@@ -157,7 +157,7 @@ function setupBitmapClass(bitmapClass) {
                 width: this.width
             };
         }
-        
+
         if (TypeUtils.isNullOrUndefined(leftTop)) {
             leftTop = {
                 x: 0,
@@ -182,7 +182,7 @@ function setupBitmapClass(bitmapClass) {
                 width: this.width
             };
         }
-        
+
         if (TypeUtils.isNullOrUndefined(leftTop)) {
             leftTop = {
                 x: 0,
@@ -236,7 +236,7 @@ function setupBitmapClass(bitmapClass) {
     // normalizeColor()
     bitmapClass.prototype.normalizeColor = function(c) {
         c = toARGB(c) || this.defaultColor;
-        
+
         return !TypeUtils.isNullOrUndefined(c) ? c : null;
     };
 
@@ -455,7 +455,7 @@ function toARGB(v, throwException) {
         }
 
         var match = REGEX_COLOR.exec(v);
-        
+
         isValid = null !== match;
         if (isValid) {
             var colorVal = match[2];
@@ -465,7 +465,7 @@ function toARGB(v, throwException) {
                 var argbStartIndex = 3 === colorVal.length ? 0 : 1;
 
                 if (4 === colorVal.length) {
-                    argb.a = parseInt(colorVal[0] + colorVal[0], 16); 
+                    argb.a = parseInt(colorVal[0] + colorVal[0], 16);
                 }
                 argb.r = parseInt(colorVal[argbStartIndex] + colorVal[argbStartIndex], 16);
                 argb.g = parseInt(colorVal[argbStartIndex + 1] + colorVal[argbStartIndex + 1], 16);
@@ -473,7 +473,7 @@ function toARGB(v, throwException) {
             }
             else {
                 // #(AA)RRGGBB
-                
+
                 var argbStartIndex = 6 === colorVal.length ? 0 : 2;
 
                 if (8 === colorVal.length) {
@@ -500,7 +500,7 @@ function toARGB(v, throwException) {
     }
     else if (typeof v === "object") {
         // object
-        
+
         isValid = (typeof v.a !== undefined) &&
                   (typeof v.r !== undefined) &&
                   (typeof v.g !== undefined) &&
@@ -552,7 +552,7 @@ function toFont(v, throwException) {
     }
     else if (typeof v === "object") {
         // object
-        
+
         isValid = (typeof v.name !== undefined);
 
         if (isValid) {
@@ -593,7 +593,7 @@ function toPoint2D(v, throwException) {
         // string
 
         var match = REGEX_POINT_2D.exec(v.toLowerCase().trim());
-        
+
         isValid = null !== match;
         if (isValid) {
             point.x = parseFloat(match[1]);
@@ -602,7 +602,7 @@ function toPoint2D(v, throwException) {
     }
     else if (typeof v === "object") {
         // object
-        
+
         isValid = (typeof v.x !== undefined) &&
                   (typeof v.y !== undefined);
 
@@ -644,7 +644,7 @@ function toSize(v, throwException) {
         // string
 
         var match = REGEX_SIZE.exec(v.toLowerCase().trim());
-        
+
         isValid = null !== match;
         if (isValid) {
             size.width = parseFloat(match[1]);
@@ -653,7 +653,7 @@ function toSize(v, throwException) {
     }
     else if (typeof v === "object") {
         // object
-        
+
         isValid = (typeof v.width !== undefined) &&
                   (typeof v.height !== undefined);
 

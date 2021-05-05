@@ -1,17 +1,17 @@
 // The MIT License (MIT)
-// 
+//
 // Copyright (c) Marcel Joachim Kloubert <marcel.kloubert@gmx.net>
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
 // deal in the Software without restriction, including without limitation the
 // rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
 // sell copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,11 +20,11 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-var Application = require('application');
+var Application = require('@nativescript/core/application');
 var BitmapFactoryCommons = require('./BitmapFactory.commons');
-var FS = require('file-system');
-var ImageSource = require('image-source');
-var TypeUtils = require("utils/types");
+var FS = require('@nativescript/core/file-system');
+var ImageSource = require('@nativescript/core/image-source');
+var TypeUtils = require("@nativescript/core/utils/types");
 
 
 // default options
@@ -102,7 +102,7 @@ AndroidBitmap.prototype._drawOval = function(size, leftTop, color, fillColor) {
 
     var paintLine = this.__createPaint(color);
     paintLine.setStyle(android.graphics.Paint.Style.STROKE);
-    
+
     var paints = [];
     paints.push(paintLine);
 
@@ -177,7 +177,7 @@ AndroidBitmap.prototype._drawArc = function(size, leftTop, startAngle, sweepAngl
 AndroidBitmap.prototype._drawRect = function(size, leftTop, color, fillColor) {
     var paintLine = this.__createPaint(color);
     paintLine.setStyle(android.graphics.Paint.Style.STROKE);
-    
+
     var paints = [];
     paints.push(paintLine);
 
@@ -276,9 +276,9 @@ AndroidBitmap.prototype._toObject = function(format, quality) {
 
         var bitmapData = {};
 
-        var base64 = android.util.Base64.encodeToString(stream.toByteArray(), 
+        var base64 = android.util.Base64.encodeToString(stream.toByteArray(),
                                                         android.util.Base64.NO_WRAP);
-        
+
         // base64
         Object.defineProperty(bitmapData, 'base64', {
             get: function() { return base64; }
@@ -357,7 +357,7 @@ AndroidBitmap.prototype._writeText = function(txt, leftTop, font) {
             catch (e) {
                 console.log('[nativescript-bitmap-factory] AndroidBitmap._writeText(): ' + e);
             }
-            
+
             if (!typeFace) {
                 // fallback
                 typeFace = android.graphics.Typeface.create(fontName, android.graphics.Typeface.NORMAL);
@@ -368,7 +368,7 @@ AndroidBitmap.prototype._writeText = function(txt, leftTop, font) {
             paint.setTypeface(typeFace);
         }
     }
-    
+
     paint.setXfermode(new android.graphics.PorterDuffXfermode(android.graphics.PorterDuff.Mode.SRC_OVER));
 
     this.__canvas.drawText(txt,
